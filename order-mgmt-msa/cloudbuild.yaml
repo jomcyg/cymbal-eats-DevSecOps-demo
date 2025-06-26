@@ -29,7 +29,7 @@ steps:
     - '300'
     - '--allow-unauthenticated'
     - '--set-env-vars'
-    - 'GOOGLE_CLOUD_PROJECT=cloud-next25-screendemo'
+    - 'GOOGLE_CLOUD_PROJECT=jmc-devsecops'
     waitFor: [ 'maven-build' ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
