@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 function HomePage({customer}) {
  
-  let welcomeMessage = "Welcome to Cymbal Eats Food Delivery!";
+  let welcomeMessage = "Welcome to Jomcy's food delivery";
 
   if (customer instanceof Map && customer.has("name")) {
     welcomeMessage = `Welcome, ${customer.get("name")}! Hope you are having a delightful day`;
