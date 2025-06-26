@@ -338,7 +338,7 @@ function App() {
         <Header cartItemCount={cartItemsCount} toogle={toggle} /> {/* Pass cart item count */}
         <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
         <Routes>
-          <Route path="/" element={<HomePage customer={customer}  />} />
+          <Route path="/" element={<HomePage customer={customer} filteredRestaurants={filteredRestaurants} />} />
             <Route path="/restaurants" element={<RestaurantList restaurants={filteredRestaurants} />} /> {/* Pass filtered restaurants */}
           <Route
             path="/restaurants/:id"
