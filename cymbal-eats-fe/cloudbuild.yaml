@@ -1,8 +1,8 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/cymbal-eats-fe', './cymbal-eats-fe']
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/cymbal-eats-fe', './cymbal-eats-fe']
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/cymbal-eats-fe' ]
+    args: [ 'push', 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/cymbal-eats-fe' ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -10,7 +10,7 @@ steps:
     - 'deploy'
     - 'cymbal-eats-fe'
     - '--image'
-    - 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/cymbal-eats-fe'
+    - 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/cymbal-eats-fe'
     - '--region'
     - 'us-central1'
     - '--concurrency'
