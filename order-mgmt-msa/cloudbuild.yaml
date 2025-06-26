@@ -4,10 +4,10 @@ steps:
     id: 'maven-build'
   - name: 'gcr.io/cloud-builders/docker'
     id: 'image-build'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/order-mgmt-api', '--build-arg=JAR_FILE=target/order-mgmt-0.1.jar', './order-mgmt-msa']
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/order-mgmt-api', '--build-arg=JAR_FILE=target/order-mgmt-0.1.jar', './order-mgmt-msa']
     waitFor: ['maven-build'] # Wait for the Maven build to complete
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/order-mgmt-api' ]
+    args: [ 'push', 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/order-mgmt-api' ]
     waitFor: [ 'maven-build', 'image-build' ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -16,7 +16,7 @@ steps:
     - 'deploy'
     - 'order-mgmt-api'
     - '--image'
-    - 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/order-mgmt-api'
+    - 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/order-mgmt-api'
     - '--region'
     - 'us-central1'
     - '--concurrency'
@@ -46,6 +46,6 @@ steps:
     - 'roles/run.invoker'
     waitFor: [ 'maven-build' ]
 images:
-- 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/order-mgmt-api'
+- 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/order-mgmt-api'
 options:
     logging: CLOUD_LOGGING_ONLY
