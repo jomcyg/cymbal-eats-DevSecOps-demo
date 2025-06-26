@@ -4,10 +4,10 @@ steps:
     id: 'maven-build'
   - name: 'gcr.io/cloud-builders/docker'
     id: 'image-build'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/shopping-cart-api', '--build-arg=JAR_FILE=target/shopping-cart-0.1.jar', './shopping-cart-msa']
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/shopping-cart-api', '--build-arg=JAR_FILE=target/shopping-cart-0.1.jar', './shopping-cart-msa']
     waitFor: ['maven-build'] # Wait for the Maven build to complete
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/shopping-cart-api' ]
+    args: [ 'push', 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/shopping-cart-api' ]
     waitFor: [ 'maven-build', 'image-build' ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -16,7 +16,7 @@ steps:
     - 'deploy'
     - 'shopping-cart-api'
     - '--image'
-    - 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/shopping-cart-api'
+    - 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/shopping-cart-api'
     - '--region'
     - 'us-central1'
     - '--concurrency'
@@ -46,6 +46,6 @@ steps:
     - 'roles/run.invoker'
     waitFor: [ 'maven-build' ]
 images:
-- 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/shopping-cart-api'
+- 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/shopping-cart-api'
 options:
     logging: CLOUD_LOGGING_ONLY
