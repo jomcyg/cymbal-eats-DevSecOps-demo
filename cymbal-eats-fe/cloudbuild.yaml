@@ -38,6 +38,6 @@ steps:
     - '--role'
     - 'roles/run.invoker'
 images:
-- 'us-central1-docker.pkg.dev/cloud-next25-screendemo/cloud-next25-screendemo/cymbal-eats-fe'
+- 'asia-south1-docker.pkg.dev/jmc-devsecops/artifact-scanning-repo/cymbal-eats-fe'
 options:
     logging: CLOUD_LOGGING_ONLY
